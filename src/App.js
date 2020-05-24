@@ -8,6 +8,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
+          API Domain: {process.env.REACT_APP_API_DOMAIN}
+        </p>
+        <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
