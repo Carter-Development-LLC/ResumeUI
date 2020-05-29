@@ -12,12 +12,17 @@ const LinkStyle: React.CSSProperties = {
 };
 
 export const InternalLink = (props: LinkProps): React.ReactElement => {
-    const { children, style, ...properties } = props
+    const { children, style, ...properties } = props;
     return (
-        <Link style={{...LinkStyle, ...style}} {...properties}>
+        <Link style={{ ...LinkStyle, ...style }} {...properties}>
             {children}
         </Link>
     );
+};
+
+export const InternalButtonLink = (props: LinkProps): React.ReactElement => {
+    const { children, ...properties } = props;
+    return <Link style={{color: 'inherit'}} {...properties}>{children}</Link>;
 };
 
 export const ExternalLink = (props: LinkProps): React.ReactElement => {
@@ -26,7 +31,7 @@ export const ExternalLink = (props: LinkProps): React.ReactElement => {
         <a
             href={to}
             rel={'noopener noreferrer'}
-            style={{...LinkStyle, ...style}}
+            style={{ ...LinkStyle, ...style }}
             target={'_blank'}
             {...properties}>
             {children}

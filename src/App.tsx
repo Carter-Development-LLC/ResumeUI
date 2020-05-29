@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import Home from './components/Home';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default (props: any): React.ReactElement => {
@@ -14,7 +16,9 @@ export default (props: any): React.ReactElement => {
                     <Route path='/about'>About Page</Route>
                     <Route path='/resume'>Resume Page</Route>
                     <Route path='/contact'>Contact Page</Route>
-                    <Route path='/'>Home Page</Route>
+                    <Route path='/'>
+                        <Home />
+                    </Route>
                 </Switch>
             </main>
             <Footer />
