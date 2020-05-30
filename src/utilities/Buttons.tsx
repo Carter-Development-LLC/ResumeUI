@@ -6,9 +6,7 @@ type OutlineButtonProps = ButtonProps &
         light: boolean;
     };
 
-export const OutlineButton = (
-    props: OutlineButtonProps
-): React.ReactElement => {
+export const OutlineButton = (props: OutlineButtonProps): React.ReactElement => {
     const { light, ...properties } = props;
     let variant: ButtonProps['variant'] = 'outline-dark';
     if (light) variant = 'outline-light';
