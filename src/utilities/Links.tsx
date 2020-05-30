@@ -1,14 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { Link } from "react-router-dom";
 
 type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
     to: string;
 };
 
 const LinkStyle: React.CSSProperties = {
-    color: '#b0e0e6',
+    color: "#b0e0e6",
 };
 
 export const InternalLink = (props: LinkProps): React.ReactElement => {
@@ -22,21 +20,26 @@ export const InternalLink = (props: LinkProps): React.ReactElement => {
 
 export const InternalButtonLink = (props: LinkProps): React.ReactElement => {
     const { children, ...properties } = props;
-    return <Link style={{color: 'inherit'}} {...properties}>{children}</Link>;
+    return (
+        <Link style={{ color: "inherit" }} {...properties}>
+            {children}
+        </Link>
+    );
 };
 
 export const ExternalLink = (props: LinkProps): React.ReactElement => {
     const { children, style, to, ...properties } = props;
     return (
         <a
+            className={"external-link"}
             href={to}
-            rel={'noopener noreferrer'}
+            rel={"noopener noreferrer"}
             style={{ ...LinkStyle, ...style }}
-            target={'_blank'}
-            {...properties}>
+            target={"_blank"}
+            {...properties}
+        >
             {children}
             &nbsp;
-            <FontAwesomeIcon icon={faExternalLinkAlt} />
         </a>
     );
 };
