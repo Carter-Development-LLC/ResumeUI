@@ -9,14 +9,14 @@ export default (props: any): React.ReactElement => {
     };
 
     return (
-        <Navbar bg={'dark'} expand={'sm'} fixed='top' variant={'dark'}>
+        <Navbar bg={'dark'} expand={'sm'} fixed={'top'} id={'header'} variant={'dark'}>
             <InternalLink to={'/'}>
                 <Navbar.Brand>
                     <img
-                        src={process.env.PUBLIC_URL + '/media/profile-circle.png'}
                         alt={"Brian Carter's profile"}
-                        width='60'
-                        height='60'
+                        src={`${process.env.PUBLIC_URL}/media/profile-circle.png`}
+                        height={60}
+                        width={60}
                     />
                     &nbsp;Brian Carter
                 </Navbar.Brand>

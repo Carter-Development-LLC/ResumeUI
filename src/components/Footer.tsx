@@ -19,27 +19,27 @@ export default (props: any): React.ReactElement => {
     const linkedInIconStyle: React.CSSProperties = { color: '#2867B2' };
 
     return (
-        <Container as={'footer'} className={'bg-dark'} fluid style={footerStyle}>
-            <Row className={'text-center py-2'}>
-                <Col className={'py-2'} xs={12} sm={6} lg>
+        <Container as={'footer'} className={'bg-dark'} fluid id={'footer'} style={footerStyle}>
+            <Row className={'text-center py-1'}>
+                <Col className={'py-1'} xs={12} sm={6} lg>
                     <ExternalLink to={'tel:8018089168'}>
                         <FontAwesomeIcon icon={faPhone} style={phoneIconStyle} />
                         &nbsp;(801)&nbsp;808-9168
                     </ExternalLink>
                 </Col>
-                <Col className={'py-2'} xs={12} sm={6} lg>
+                <Col className={'py-1'} xs={12} sm={6} lg>
                     <ExternalLink to={'mailto:brian@briancarter.dev'}>
                         <FontAwesomeIcon icon={faEnvelope} style={mailIconStyle} />
                         &nbsp;brian@briancarter.dev
                     </ExternalLink>
                 </Col>
-                <Col className={'py-2'} xs={12} sm={6} lg>
+                <Col className={'py-1'} xs={12} sm={6} lg>
                     <ExternalLink to={'https://github.com/Carter-Development-LLC/ResumeUI'}>
                         <FontAwesomeIcon icon={faGithub} style={githubIconStyle} />
                         &nbsp;Source Code
                     </ExternalLink>
                 </Col>
-                <Col className={'py-2'} xs={12} sm={6} lg>
+                <Col className={'py-1'} xs={12} sm={6} lg>
                     <ExternalLink to={'https://linkedin.com/in/brianrichardcarter'}>
                         <FontAwesomeIcon icon={faLinkedin} style={linkedInIconStyle} />
                         &nbsp;LinkedIn
