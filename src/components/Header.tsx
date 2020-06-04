@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 
-import { InternalLink } from '../utilities/Links';
+import { InternalLink } from './utilities/Links';
 
 export default (props: any): React.ReactElement => {
     const linkStyle: React.CSSProperties = {

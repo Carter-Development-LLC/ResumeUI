@@ -20,8 +20,13 @@ export default abstract class Subject {
 
     abstract async fetchData(): Promise<any>;
 
-    getData = async (): Promise<void> => {
-        this.data = await this.fetchData();
-        this.notify();
+    getData = async (errorHandler: () => void): Promise<void> => {
+        try {
+            this.data = await this.fetchData();
+            this.notify();
+        } catch (error) {
+            console.log(error);
+            errorHandler();
+        }
     };
 }

@@ -4,7 +4,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import About from './components/pages/About';
-import Home from './components/Home';
+import Home from './components/pages/Home';
+import NoMatch from './components/pages/NoMatch';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
@@ -49,8 +50,14 @@ export default class App extends React.Component<any, AppState> {
                         </Route>
                         <Route path='/resume'>Resume Page</Route>
                         <Route path='/contact'>Contact Page</Route>
-                        <Route path='/'>
+                        <Route path='/' exact>
                             <Home />
+                        </Route>
+                        <Route>
+                            <NoMatch
+                                headerHeight={this.state.headerHeight}
+                                footerHeight={this.state.footerHeight}
+                            />
                         </Route>
                     </Switch>
                 </main>

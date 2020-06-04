@@ -2,40 +2,46 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Alert from 'react-bootstrap/Alert';
 
-import Loader from '../../utilities/Loader';
-
-import { BioAPI } from '../../APIFacade';
-import Observer from '../../model/observer/Observer';
+import BioAPIFacade from '../../model/serverFacade/BioAPIFacade';
+import Loader from '../utilities/Loader';
+import Observer from '../../model/serverFacade/observer/Observer';
 import Bio from '../../model/domain/Bio';
 import { PageProps } from './Page';
 
 type AboutState = {
     bio: Bio | null;
+    fetchFailed: boolean;
     isLoading: boolean;
 };
 
 export default class About extends React.Component<PageProps, AboutState> implements Observer {
     id: string;
-    subject: BioAPI;
+    subject: BioAPIFacade;
 
     constructor(props: PageProps) {
         super(props);
         this.id = 'AboutPage';
-        this.subject = new BioAPI();
+        this.subject = new BioAPIFacade();
         this.state = {
             bio: null,
+            fetchFailed: false,
             isLoading: true,
         };
     }
 
     componentDidMount = (): void => {
         this.subject.subscribe(this);
-        this.subject.getData();
+        this.subject.getData(this.handleFetchError);
     };
 
     componentWillUnmount = (): void => {
         this.subject.unSubscribe(this);
+    };
+
+    handleFetchError = (): void => {
+        this.setState({ fetchFailed: true, isLoading: false });
     };
 
     update = (): void => {
@@ -55,6 +61,13 @@ export default class About extends React.Component<PageProps, AboutState> implem
                     {this.state.isLoading ? (
                         <Col xs={'auto'} className={'mx-auto'}>
                             <Loader />
+                        </Col>
+                    ) : this.state.fetchFailed ? (
+                        <Col xs={12}>
+                            <Alert variant={'danger'} className={'text-center'}>
+                                Sorry, something went wrong fetching the data. Please try again
+                                later.
+                            </Alert>
                         </Col>
                     ) : (
                         <Col xs={11} lg={8} className={'mx-auto'}>
